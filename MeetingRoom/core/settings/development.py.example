@@ -1,0 +1,33 @@
+from .base import *
+
+DEBUG = True
+
+# Database
+# https://docs.djangoproject.com/en/3.2/ref/settings/#databases
+
+DATABASES = {
+    "default": {
+        "ENGINE": os.environ.get(
+            "SQL_ENGINE", "django.db.backends.postgresql_psycopg2"
+        ),
+        "NAME": os.environ.get("SQL_DATABASE", "meet"),
+        "USER": os.environ.get("SQL_USER", "postgres"),
+        "PASSWORD": os.environ.get("SQL_PASSWORD", "password"),
+        "HOST": os.environ.get("SQL_HOST", "localhost"),
+        "PORT": os.environ.get("SQL_PORT", "5432"),
+    }
+}
+
+# Static files (CSS, JavaScript, Images)
+# https://docs.djangoproject.com/en/3.2/howto/static-files/
+
+STATIC_URL = '/static/'
+STATICFILES_DIRS = (
+    os.path.join('static'),
+    os.path.join('static/images'),
+)
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
+
+DATA_UPLOAD_MAX_MEMORY_SIZE = 5242880
