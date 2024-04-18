@@ -5,6 +5,9 @@ DEBUG = True
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
+HOST_URL = os.environ.get("HOST_URL", "http://127.0.0.1:8000/api/")  # http://localhost
+BACKEND_URL = HOST_URL + API_VERSION + "/"
+
 DATABASES = {
     "default": {
         "ENGINE": os.environ.get(
@@ -30,4 +33,4 @@ STATICFILES_DIRS = (
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 
-DATA_UPLOAD_MAX_MEMORY_SIZE = 5242880
+DATA_UPLOAD_MAX_MEMORY_SIZE = os.environ.get("DATA_UPLOAD_MAX_MEMORY_SIZE", 10485760)

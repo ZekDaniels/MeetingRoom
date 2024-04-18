@@ -2,7 +2,10 @@ from .base import *
 
 DEBUG = False
 
-ALLOWED_HOSTS = os.environ.get("DJANGO_ALLOWED_HOSTS", ["*"]).split(",")
+ALLOWED_HOSTS = os.environ.get("DJANGO_ALLOWED_HOSTS", "127.0.0.1").split(",")
+INTERNAL_IPS = os.environ.get("DJANGO_INTERNAL_IPS", "127.0.0.1").split(",")
+HOST_URL = os.environ.get("HOST_URL", "http://127.0.0.1:8000/api/")  # http://localhost
+BACKEND_URL = HOST_URL + API_VERSION + "/"
 
 DATABASES = {
     "default": {
